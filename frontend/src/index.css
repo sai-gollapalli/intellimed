@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Health-Tech Color Palette */
+    --background: 180 20% 98%;
+    --foreground: 200 30% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 200 30% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 30% 15%;
+    --primary: 178 70% 40%;
+    --primary-foreground: 180 20% 98%;
+    --primary-light: 178 70% 90%;
+    --secondary: 180 30% 95%;
+    --secondary-foreground: 200 30% 15%;
+    --muted: 180 30% 95%;
+    --muted-foreground: 200 20% 45%;
+    --accent: 160 60% 45%;
+    --accent-foreground: 180 20% 98%;
+    --medical: 150 60% 45%;
+    --medical-light: 150 60% 90%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 180 20% 98%;
+    --border: 180 25% 90%;
+    --input: 180 25% 90%;
+    --ring: 178 70% 40%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 200 25% 8%;
+    --foreground: 180 20% 95%;
+    --card: 200 25% 12%;
+    --card-foreground: 180 20% 95%;
+    --popover: 200 25% 12%;
+    --popover-foreground: 180 20% 95%;
+    --primary: 178 70% 45%;
+    --primary-foreground: 180 20% 98%;
+    --primary-light: 178 70% 20%;
+    --secondary: 200 25% 18%;
+    --secondary-foreground: 180 20% 95%;
+    --muted: 200 25% 18%;
+    --muted-foreground: 180 20% 60%;
+    --accent: 160 60% 50%;
+    --accent-foreground: 180 20% 98%;
+    --medical: 150 60% 50%;
+    --medical-light: 150 60% 20%;
+    --destructive: 0 60% 40%;
+    --destructive-foreground: 180 20% 98%;
+    --border: 200 25% 22%;
+    --input: 200 25% 22%;
+    --ring: 178 70% 45%;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-teal-100/60 dark:border-teal-900/30 shadow-lg;
+  }
+
+  .glass-card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:border-teal-300/60 dark:hover:border-teal-700/50 hover:-translate-y-1 hover:bg-white/95 dark:hover:bg-slate-900/95;
+  }
+
+  .btn-primary {
+    @apply bg-teal-600 hover:bg-teal-700 text-white font-medium px-5 py-2.5 rounded-xl transition-all duration-200 shadow-lg shadow-teal-600/20 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-teal-600/30;
+  }
+
+  .btn-secondary {
+    @apply bg-teal-50 hover:bg-teal-100 dark:bg-teal-950/30 dark:hover:bg-teal-950/50 text-teal-700 dark:text-teal-200 font-medium px-5 py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 border border-teal-200 dark:border-teal-800;
+  }
+
+  .btn-outline {
+    @apply border border-teal-300 dark:border-teal-700 hover:bg-teal-50 dark:hover:bg-teal-950/30 text-teal-700 dark:text-teal-200 font-medium px-5 py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 hover:border-teal-400 dark:hover:border-teal-600;
+  }
+
+  .btn-medical {
+    @apply bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-5 py-2.5 rounded-xl transition-all duration-200 shadow-lg shadow-emerald-600/20 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-emerald-600/30;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2.5 bg-white dark:bg-slate-900 border border-teal-200 dark:border-teal-800 rounded-xl text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-500 transition-all text-sm;
+  }
+
+  .medical-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-100 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800;
+  }
+
+  .status-pulse {
+    @apply relative inline-flex h-2.5 w-2.5;
+  }
+
+  .status-pulse::before {
+    content: '';
+    @apply absolute h-full w-full rounded-full bg-emerald-500 opacity-75 animate-ping;
+  }
+
+  .status-pulse::after {
+    content: '';
+    @apply absolute h-full w-full rounded-full bg-emerald-500;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-teal-200 dark:bg-teal-800 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-teal-300 dark:bg-teal-700;
+}
+
+/* Medical Pattern Background */
+.medical-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(20, 184, 166, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* ECG Animation */
+@keyframes ecg-line {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(100%); }
+}
+
+.ecg-animation {
+  animation: ecg-line 2s linear infinite;
+}
+
+/* Custom Animations */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.9; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.animate-glow {
+  animation: glow 8s ease-in-out infinite;
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 4s ease infinite;
+}

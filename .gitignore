@@ -1,0 +1,56 @@
+# Environment & Local Secrets
+.env
+*.env.local
+.env.production
+
+# Database & Storage
+*.db
+*.sqlite
+*.sqlite3
+intellimed.db
+
+# Uploads & Generated Storage
+uploads/*
+!uploads/.gitkeep
+reports/*
+!reports/.gitkeep
+qr_codes/*
+!qr_codes/.gitkeep
+ai/models/*
+!ai/models/.gitkeep
+
+# Temporary & Scratch Files
+tmp_*.py
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Node & Frontend Build
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+*.log
+
+# IDE & OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/

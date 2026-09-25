@@ -1,0 +1,28 @@
+services:
+  # IntelliMed FastAPI Backend Web Service
+  - type: web
+    name: intellimed-backend
+    env: python
+    region: oregon
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+    startCommand: "python -m database.seed && uvicorn backend.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: DEBUG
+        value: "false"
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: "http://localhost:5173,https://*.vercel.app,https://*.netlify.app"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: intellimed-db
+          property: connectionString
+
+databases:
+  # Managed PostgreSQL Database
+  - name: intellimed-db
+    region: oregon
+    databaseName: intellimed_db
+    user: postgres
