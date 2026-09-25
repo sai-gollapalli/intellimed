@@ -25,4 +25,4 @@ databases:
   - name: intellimed-db
     region: oregon
     databaseName: intellimed_db
-    user: postgres
+    user: intellimed_user
